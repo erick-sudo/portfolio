@@ -71,6 +71,8 @@
 .comments {
   background-image: linear-gradient(180deg, var(--bgLinearblogs) 1%,transparent);
   margin-top: 2em;
+  height: 60px;
+  overflow-y: hidden;
 }
 .comment {
   border-top: solid 2px var(--bgblogs);
@@ -212,7 +214,9 @@ input, textarea{
   background-color: transparent;
   border: none;
   margin-top: 1em;
+  cursor: pointer;
 }
+
 .post-btn > img {
   width: 50px;
 }
@@ -226,5 +230,51 @@ input, textarea{
 }
 .hide-poster > img {
   width: 100%;
+  transform: scale(0.6);
 }
 
+.zoom-in {
+  animation: compress 1.5s ease-in;
+}
+
+.zoom-out {
+  animation: expand 1.5s ease-in;
+}
+
+@keyframes expand {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+@keyframes compress {
+  from {
+    opacity: 1;
+  } to {
+    opacity: 0;
+  }
+}
+
+.expand-comments {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px black;
+  cursor: pointer;
+}
+
+.expand-comments >img:hover{
+  transform: scale(0.8);
+}
+
+.h5{
+  color: var(--fgblogs);
+  text-align: center;
+  font-size: 1.2em;
+}
+.about-post{
+  padding: 1em;
+  font-family: monospace;
+  font-size: 1.2em;
+  text-align: center;
+}

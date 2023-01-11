@@ -6,7 +6,10 @@ import Blogs from './components/blogs/Blogs';
 
 function App() {
   function showBlogForm(event) {
-    document.querySelector(".post-form").style.display = "block"
+    const postform = document.querySelector(".post-form")
+    postform.classList.add("zoom-out")
+    postform.classList.remove("zoom-in")
+    postform.style.display = "block"
   }
   return (
     <div className="App">
