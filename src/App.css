@@ -10,6 +10,16 @@
   --hover: rgb(224, 61, 88); /*e03d58*/
 }
 
+.blog{
+  background-color: var(--fg);
+  width: max-content;padding: 1em;
+  margin: 10px 0;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  position: sticky;
+  top: 2em;
+}
+
 html {
   background-color: var(--bg);
   color: var(--wht);

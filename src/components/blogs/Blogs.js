@@ -2,24 +2,36 @@ import React from "react"
 import "./Blogs.css"
 import subaru from "../../assets/posts/subaru-impreza.png"
 import telegram from "../../assets/iconsHv/telegram.png"
+import arrowLeft from "../../assets/iconsHv/arrow-left.png"
 
 function Blogs() {
     return (
-        <div className="blogs">
-            <Post author="Erick Ochieng" time={Date()} image={subaru} />
-            <Post author="Erick Ochieng" time={Date()} image={subaru} />
-            <Post author="Erick Ochieng" time={Date()} image={subaru} />
-            <Post author="Erick Ochieng" time={Date()} image={subaru} />
+        <div className="blogs-wrapper">
+            <h2>Blogs</h2>
+            <PostForm send={telegram} />
+            <div className="blogs">
+                <Post author="Erick Ochieng" time={Date()} image={subaru} />
+            </div>
         </div>
     );
 }
 
-function PostForm() {
-    return (
-        <div>
-            <h1>Post Form</h1>
-            <form>
+function PostForm({send}) {
+    function hideBlogForm(event) {
+        document.querySelector(".post-form").style.display = "none"
+    }
 
+    return (
+        <div className="post-form">
+            <div className="hide-poster" onClick={hideBlogForm}><img src={arrowLeft} alt="close poster" /></div>
+            <h2>Conversation is king. Content is just something to talk about.</h2>
+            <form className="form-post">
+              <input name="firstname" type="text" placeholder="Firstname" />
+              <input name="lastname" type="text" placeholder="Lastname" />
+              <input name="email" type="text" required  placeholder="Email"/>
+              <input name="image" type="file" />
+              <textarea className="blog-info" name="blog-info" placeholder="About" required></textarea>
+              <button className="post-btn"><img src={send} alt="post" /></button>
             </form>
         </div>
     );
