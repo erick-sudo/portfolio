@@ -10,8 +10,95 @@
     --hoverblogs: #0d9cc4
   }
 
+  *{
+    box-sizing: border-box;
+  }
+
 .blogs {
     border: solid 1px var(--fgblogs);
-    height: 400px;
+    min-height: 400px;
     margin-bottom: 1em;
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.posts{
+  max-width: 400px;
+  border: solid 2px orchid;
+  margin: 5px;
+  padding: 2em;
+
+  border-radius: 10px;
+}
+.pictures{
+  width: 100%;
+}
+
+.comments {
+  border: solid 1px;
+
+  margin: 0.5em;
+}
+.comment {
+  border: solid 1px;
+  height: 100px;
+
+  margin: 0.5em;
+}
+.comment-form {
+  border: solid 1px lime;
+  border-radius: 10px;
+
+  position: relative;
+
+  padding: 0.2em;
+}
+.write-comment {
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  min-height: 100px;
+
+  border-radius: 10px;
+  outline: none;
+  padding: 1.4em;
+  border: none;
+}
+.message-icon{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+}
+.message-icon > img {
+  width: 100%;
+}
+.comment-author {
+  border: solid 1px var(--hoverblogs);
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 25px;
+}
+.email{
+  border: none;
+  background: transparent;
+  flex-grow: 2;
+  outline: none;
+}
+.comment-btn {
+  background-color: var(--hoverblogs);
+  width: 50px;
+  padding: 0.4em;
+  border: none;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  cursor: pointer;
+}
+
+.comment-btn > img {
+  margin-right: 1em;
+  width: 90%;
+  display: block;
 }
