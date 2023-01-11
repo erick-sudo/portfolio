@@ -1,0 +1,17 @@
+:root {
+    --bgblogs: #282c34;
+    --headerblogs: #fff;
+    --linkblogs: #e03d58d5;
+    --fgblogs: #e03d58;
+    --bgLinearblogs: #0d9cc425;
+    --textblogs: hsla(0, 0%, 100%, 0.88);
+    --whtblogs: white;
+    --linkGreyblogs: rgb(155, 153, 153);
+    --hoverblogs: #0d9cc4
+  }
+
+.blogs {
+    border: solid 1px var(--fgblogs);
+    height: 400px;
+    margin-bottom: 1em;
+}
