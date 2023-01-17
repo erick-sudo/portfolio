@@ -5,7 +5,7 @@ import arrowLeft from "../../assets/iconsHv/x-mark.png"
 import arrowup from "../../assets/iconsFg/arrow-up.png"
 import arrowdown from "../../assets/iconsFg/arrow-down.png"
 
-function Blogs({blogs, setBlogs}) {
+function Blogs({blogs, setBlogs, postComment}) {
 
     function updateBlogs(blog) {
         setBlogs([blog, ...blogs])
@@ -18,7 +18,7 @@ function Blogs({blogs, setBlogs}) {
             <div className="blogs">
                 {
                     blogs.map(blog => {
-                      return <Post key={blog.id} blogpost={blog}/>  
+                      return <Post key={blog.id} postComment={postComment} blogpost={blog}/>  
                     })
                 }
             </div>
@@ -80,14 +80,9 @@ function PostForm({send, updateBlogs}) {
 }
 
 
-function Post({blogpost: {id, author, date, image, description, comments}}) {
+function Post({blogpost: {id, author, date, image, description, comments}, postComment}) {
 
-    const [collapse, setcollapse] = useState(false);
-    const [blogcomments, setComments] = useState(comments)
-
-    function postComment() {
-        //setComments([...blogcomments, {author, date, image, description}])
-    }
+    const [collapse, setcollapse] = useState(true);
 
     return (
         <div className="posts">
@@ -107,7 +102,7 @@ function Post({blogpost: {id, author, date, image, description, comments}}) {
                     })
                 }
             </section>
-            <CommentForm send={telegram}/>
+            <CommentForm postId={id} send={telegram} postComment={postComment}/>
         </div>
     );
 }
@@ -133,15 +128,23 @@ function Comment({comment: {name, email, body}}) {
     );
 }
 
-function CommentForm({send}) {
+function CommentForm({send, postId, postComment}) {
     return (
         <div className="comment-form">
             <div className="message-icon"><img src="https://cdn.pixabay.com/photo/2017/03/17/06/47/email-2151046_960_720.png" /></div>
             <form onSubmit={(event) => {
                 event.preventDefault();
                 
+                const newComment = {
+                    name: event.target.email.value.slice(0,5)+"...",
+                    email: event.target.email.value,
+                    body: event.target.body.value
+                }
+
+                postComment(postId, newComment)
+                event.target.reset()       
             }}>
-                <textarea className="write-comment" ></textarea>
+                <textarea className="write-comment" name="body" ></textarea>
                 <div className="comment-author">
                     <input className="email" name="email" type="email"/>
                     <button className="comment-btn"><img src={send} alt="comment" /></button>
