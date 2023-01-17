@@ -27,7 +27,7 @@ function Blogs({blogs, setBlogs}) {
 }
 
 function PostForm({send, updateBlogs}) {
-    function hideBlogForm(event) {
+    function hideBlogForm() {
         const postform = document.querySelector(".post-form")
         postform.classList.add("zoom-in")
         postform.classList.remove("zoom-out")
@@ -63,6 +63,9 @@ function PostForm({send, updateBlogs}) {
                 .then(data => {
                     updateBlogs(data)
                 })
+
+                event.target.reset()
+                hideBlogForm()
             }}>
                 <input name="title" type="text" placeholder="Title" required />
                 <input name="firstname" type="text" placeholder="Firstname" required/>
