@@ -80,13 +80,14 @@ function PostForm({send, updateBlogs}) {
 }
 
 
-function Post({blogpost: {id, author, date, image, description, comments}, postComment}) {
+function Post({blogpost: {id, author, date, image, description, comments, title}, postComment}) {
 
     const [collapse, setcollapse] = useState(true);
 
     return (
         <div className="posts">
-            <h3 className="author">{author} | <span className="time">{date}</span></h3>
+            <h1 className="post-heading">{title}</h1>
+            <h3 className="author">#{author}</h3>
             <div className="post-content">
                 <Pic url={image} />
                 <p className="about-post">{description}</p>
@@ -131,7 +132,7 @@ function Comment({comment: {name, email, body}}) {
 function CommentForm({send, postId, postComment}) {
     return (
         <div className="comment-form">
-            <div className="message-icon"><img src="https://cdn.pixabay.com/photo/2017/03/17/06/47/email-2151046_960_720.png" /></div>
+            <div className="message-icon"><img src="https://cdn.pixabay.com/photo/2017/03/17/06/47/email-2151046_960_720.png"  alt="message"/></div>
             <form onSubmit={(event) => {
                 event.preventDefault();
                 

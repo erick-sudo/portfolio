@@ -48,18 +48,6 @@ html {
   -webkit-background-clip: text;
   color: transparent;
 }
-
-.header b{
-  /* color: var(--fg); */
-}
-.real, .virtual {
-  /* background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent; */
-}
-.real{
-  
-}
 .virtual{
   transform-origin: center center;
   transform: rotateX(180deg);
