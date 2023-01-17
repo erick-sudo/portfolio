@@ -23,7 +23,7 @@ function App() {
       comment.id = newBlog.comments.length+1
       newBlog.comments.unshift(comment)
       
-      fetch(`http://localhost:4000/blogs/${blogId}`, {
+      fetch(`https://cire-portfolio.herokuapp.com/blogs/${blogId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:4000/blogs')
+    fetch('https://cire-portfolio.herokuapp.com/blogs')
     .then(response => response.json())
     .then(data => setBlogs(data.reverse()))
     }, [])

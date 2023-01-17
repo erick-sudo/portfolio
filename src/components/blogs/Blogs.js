@@ -51,7 +51,7 @@ function PostForm({send, updateBlogs}) {
                     comments: []
                 }
 
-                fetch("http://localhost:4000/blogs",{
+                fetch("https://cire-portfolio.herokuapp.com/blogs",{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
