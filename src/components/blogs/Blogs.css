@@ -34,7 +34,7 @@
     justify-content: center;
   }
   .posts {
-    max-width: 500px;
+    max-width: 700px;
   }
  
   .post-form{
@@ -58,6 +58,15 @@
   }
 }
 
+.author {
+  font-size: 1.8em;
+  margin-bottom: 1.3em;
+  color: rgb(64, 255, 0);
+}
+.time{
+  color: orange;
+}
+
 .posts{
   border-top: solid 1px var(--fgblogs);
   background-image: linear-gradient(180deg, var(--bgLinearblogs) 1%,transparent);
@@ -66,26 +75,42 @@
 }
 .pictures{
   width: 100%;
+  border-radius: 10px;
 }
-
+.pics{
+  border-radius: 5px;
+}
 .comments {
   background-image: linear-gradient(180deg, var(--bgLinearblogs) 1%,transparent);
   margin-top: 2em;
-  height: 60px;
   overflow-y: hidden;
 }
+.comment-avatar {
+  width: 40px;
+  vertical-align: middle;
+}
+.comment-legend {
+  margin-left: 1em;
+}
+.email-commment {
+  padding: 3px;
+  color: var(--fgblogs)
+}
 .comment {
-  border-top: solid 2px var(--bgblogs);
-  height: 100px;
-
-  margin-top: 2em;
-  padding: 1em;
+  margin: 1em 5px;
+  padding: 0.2em 0.8em 0.4em 0.8em;
+  border: 1px solid var(--bgblogs);
+  border-radius: 5px;
 }
 .comment-form {
   border-top: solid 1px var(--linkblogs);
   margin-top: 20px;
   position: relative;
-  padding: 0.2em;
+}
+.comment-email{
+  text-align: right;
+  color: var(--fgblogs);
+  font-size: 0.7em;
 }
 .write-comment {
   background-color: transparent;
