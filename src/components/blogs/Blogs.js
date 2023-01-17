@@ -5,11 +5,16 @@ import arrowLeft from "../../assets/iconsHv/x-mark.png"
 import arrowup from "../../assets/iconsFg/arrow-up.png"
 import arrowdown from "../../assets/iconsFg/arrow-down.png"
 
-function Blogs({blogs}) {
+function Blogs({blogs, setBlogs}) {
+
+    function updateBlogs(blog) {
+        setBlogs([blog, ...blogs])
+    }
+
     return (
         <div className="blogs-wrapper">
             <h2>Blogs</h2>
-            <PostForm send={telegram} />
+            <PostForm send={telegram} updateBlogs={updateBlogs} />
             <div className="blogs">
                 {
                     blogs.map(blog => {
@@ -21,7 +26,7 @@ function Blogs({blogs}) {
     );
 }
 
-function PostForm({send}) {
+function PostForm({send, updateBlogs}) {
     function hideBlogForm(event) {
         const postform = document.querySelector(".post-form")
         postform.classList.add("zoom-in")
@@ -33,22 +38,53 @@ function PostForm({send}) {
         <div className="post-form">
             <div className="hide-poster" onClick={hideBlogForm}><img src={arrowLeft} alt="close poster" /></div>
             <h2>Conversation is king. Content is just something to talk about.</h2>
-            <form className="form-post">
-              <input name="firstname" type="text" placeholder="Firstname" />
-              <input name="lastname" type="text" placeholder="Lastname" />
-              <input name="email" type="text" required  placeholder="Email"/>
-              <input name="image" type="file" />
-              <textarea className="blog-info" name="blog-info" placeholder="About" required></textarea>
-              <button className="post-btn"><img src={send} alt="post" /></button>
+            <form className="form-post" onSubmit={(event) => {
+                event.preventDefault()
+
+                const newBlog = {
+                    title: event.target.title.value,
+                    author: event.target.firstname.value + " " + event.target.lastname.value,
+                    url: "http://",
+                    date: new Date().toString(),
+                    description: event.target.bloginfo.value,
+                    image: event.target.image.value,
+                    comments: []
+                }
+
+                fetch("http://localhost:4000/blogs",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(newBlog)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    updateBlogs(data)
+                })
+            }}>
+                <input name="title" type="text" placeholder="Title" required />
+                <input name="firstname" type="text" placeholder="Firstname" required/>
+                <input name="lastname" type="text" placeholder="Lastname" required/>
+                <input name="email" type="text" required  placeholder="Email"/>
+                <input name="image" type="url" placeholder="Image url"/>
+                <textarea className="blog-info" name="bloginfo" placeholder="About" required></textarea>
+                <button className="post-btn"><img src={send} alt="post" /></button>
             </form>
         </div>
     );
 }
 
 
-function Post({blogpost: {author, date, image, description, comments}}) {
+function Post({blogpost: {id, author, date, image, description, comments}}) {
 
     const [collapse, setcollapse] = useState(false);
+    const [blogcomments, setComments] = useState(comments)
+
+    function postComment() {
+        //setComments([...blogcomments, {author, date, image, description}])
+    }
 
     return (
         <div className="posts">
@@ -98,7 +134,10 @@ function CommentForm({send}) {
     return (
         <div className="comment-form">
             <div className="message-icon"><img src="https://cdn.pixabay.com/photo/2017/03/17/06/47/email-2151046_960_720.png" /></div>
-            <form>
+            <form onSubmit={(event) => {
+                event.preventDefault();
+                
+            }}>
                 <textarea className="write-comment" ></textarea>
                 <div className="comment-author">
                     <input className="email" name="email" type="email"/>

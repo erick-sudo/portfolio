@@ -208,7 +208,7 @@ input, textarea{
   font-weight: bolder;
 }
 
-.form-post > input[type="text"] , textarea {
+.form-post > input[type="text"], input[type="url"] , textarea {
   margin-top: 1em;
   width: 90%;
   background-color: transparent;

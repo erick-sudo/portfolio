@@ -29,7 +29,7 @@ function App() {
         <Navbar />
 
         <div className="blog" onClick={showBlogForm}>POST</div>
-        <Blogs blogs={blogs} />
+        <Blogs blogs={blogs} setBlogs={setBlogs}/>
 
         <Footer />
     </div>
