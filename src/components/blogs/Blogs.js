@@ -87,6 +87,7 @@ function Post({blogpost: {id, author, date, image, description, comments, title}
     return (
         <div className="posts">
             <h1 className="post-heading">{title}</h1>
+            <span className="time">{date}</span>
             <h3 className="author">#{author}</h3>
             <div className="post-content">
                 <Pic url={image} />
