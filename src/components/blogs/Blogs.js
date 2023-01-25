@@ -156,4 +156,4 @@ function CommentForm({send, postId, postComment}) {
     );
 }
 
-export default Blogs
+export default Blogs;
